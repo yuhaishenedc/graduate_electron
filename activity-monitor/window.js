@@ -1,7 +1,11 @@
+//使用Node.js的os模块来获取系统信息，例如CPU的使用情况。
 const os = require('os')
+//声明一个变量chart用来存储后面创建的Chart.js图表实例。
 var chart = null;
+//初始化一个数组来存储上一次测量的CPU时间数据，用于计算CPU的时间变化。
 var lastMeasureTimes = [];
 
+//遍历每个CPU核心
 function setLastMeasureTimes(cpus) {
   for (let i = 0; i < cpus.length; i++) {
     lastMeasureTimes[i] = getCpuTimes(cpus[i]);
@@ -41,6 +45,7 @@ function updateDatasets() {
   setLastMeasureTimes(cpus);
 }
 
+//接受一个CPU核心的数据作为参数，并返回一个数组，其中包含用户时间、系统时间和空闲时间。
 function getCpuTimes(cpu) {
   return [
     cpu.times.user,
@@ -50,8 +55,9 @@ function getCpuTimes(cpu) {
 }
 
 function drawChart() {
-  chart = new Chart($('.chart'), {
-    type: 'doughnut',
+  //调用new Chart()构造函数来创建一个图表实例
+  chart = new Chart($('.chart'), {  //使用jQuery选择器选中的canvas元素，它是图表绘制的目标容器。返回的是一个jQuery对象
+    type: 'doughnut', //指定图表的类型为“甜甜圈”图。
     data: {
       labels: [
         'User Time (ms)',
@@ -81,6 +87,8 @@ function drawChart() {
   setInterval(updateDatasets, 1000);
 }
 
+//jQuery的ready事件处理器，确保在DOM完全加载后执行代码。
+//首先设置初始的CPU时间数据，然后调用drawChart函数绘制图表。
 $(() => {
   setLastMeasureTimes(os.cpus());
   drawChart();

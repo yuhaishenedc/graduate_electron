@@ -2,21 +2,28 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8">  <!-- 指定文档使用UTF-8编码 -->
 
-  <title>Activity Monitor</title>
+  <title>Activity Monitor</title> <!-- 设置的标题Electron窗口的标题 -->
 
   <!-- Stylesheets -->
+  <!-- 通过链接到Bootstrap的CDN（内容分发网络），引入了一个流行的前端框架Bootstrap 3.3.7的样式表。 -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- 引入了页面的自定义样式表 -->
   <link rel="stylesheet" href="./styles.css">
 
   <!-- Scripts -->
+  <!-- 在Electron环境中，module.exports用于模块间共享代码，但在前端代码中，通常不需要这样做。 -->
   <script>
     delete module.exports
   </script>
+  <!-- 通过引入jQuery 3.2.1版本的CDN链接，加入了一个流行的JavaScript库，简化了HTML的操作、事件处理等。 -->
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <!-- 引入了与Bootstrap CSS相对应的JavaScript文件，以启用Bootstrap组件的动态功能（如模态框、下拉菜单等）。 -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- 通过CDN链接加入了Chart.js 2.1.4，这是一个轻量级的图表库，可以在网页中绘制各种图表。 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+  <!-- 引入了一个自定义的JavaScript文件 -->
   <script src="./window.js"></script>
 
 </head>

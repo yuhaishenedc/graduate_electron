@@ -1,6 +1,5 @@
 /*使用Electron创建一个简单的窗口*/
 
-
 //从 electron 模块导入 app 和 BrowserWindow 对象。app 对象用于控制应用的生命周期，BrowserWindow 类用于创建和管理应用窗口。
 const {app, BrowserWindow} = require('electron')
 //导入 Node.js 的 path 模块，用于处理文件路径。
