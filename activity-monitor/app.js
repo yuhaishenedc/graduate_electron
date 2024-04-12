@@ -27,14 +27,10 @@ app.once('ready', () => {
     window.show()
 
     // 窗口显示时记录时间
-    const endTime = Date.now();
-    const timeTaken = endTime - startTime;
-
-    // 显示时间开销
-    console.log(`Time taken: ${timeTaken}ms`);
+    const endTime = Date.now(); 
 
     // 可以选择将时间记录到文件中，以便外部脚本读取
-    fs.writeFileSync(path.join(__dirname, 'timeTaken.txt'), `Time taken: ${timeTaken}ms`);
+    fs.writeFileSync(path.join(__dirname, 'endTime.txt'), endTime.toString());
   })
 
   //打开devtools
