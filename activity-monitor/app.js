@@ -2,6 +2,8 @@
 
 //从 electron 模块导入 app 和 BrowserWindow 对象。app 对象用于控制应用的生命周期，BrowserWindow 类用于创建和管理应用窗口。
 const {app, BrowserWindow} = require('electron')
+const fs = require('fs');
+const path = require('path');
 
 //声明一个变量 window 来存储将要创建的浏览器窗口的引用。初始值设为 null。
 let window = null
@@ -23,6 +25,16 @@ app.once('ready', () => {
   // 在回调函数中调用 window.show() 显示窗口，此时窗口已经加载完毕，可以避免显示空白窗口给用户不良体验。
   window.once('ready-to-show', () => {
     window.show()
+
+    // 窗口显示时记录时间
+    const endTime = Date.now();
+    const timeTaken = endTime - startTime;
+
+    // 显示时间开销
+    console.log(`Time taken: ${timeTaken}ms`);
+
+    // 可以选择将时间记录到文件中，以便外部脚本读取
+    fs.writeFileSync(path.join(__dirname, 'timeTaken.txt'), `Time taken: ${timeTaken}ms`);
   })
 
   //打开devtools
