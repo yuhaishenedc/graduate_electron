@@ -4,6 +4,7 @@
 const {app, BrowserWindow} = require('electron')
 //导入 Node.js 的 path 模块，用于处理文件路径。
 const path = require('path')
+const { windowsStore } = require('process')
 //导入 Node.js 的 url 模块，用于 URL 解析和处理。
 const url = require('url')
 
@@ -32,4 +33,7 @@ app.once('ready', () => {
   window.once('ready-to-show', () => {
     window.show()
   })
+
+  //打开devtools
+  window.webContents.openDevTools();
 })
